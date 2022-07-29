@@ -1,1 +1,1 @@
-worker: python app.py --detach
+worker: python app.py
