@@ -2,6 +2,7 @@ import os
 import requests
 import discord
 import asyncio
+from requests.structures import CaseInsensitiveDict
 
 # Period to sleep for before sending more messages
 PERIOD = 30
@@ -15,7 +16,10 @@ def request_messages():
     
     print("Sending Request...")
 
-    headers= { "secret" : os.environ.get("MESSAGE_KEY") }
+    headers = CaseInsensitiveDict()
+    headers["Origin"] = "https://foxhole-bounty-bot.herokuapp.com"
+    headers["Access-Control-Request-Method"] = "GET"
+    headers["secret"] = os.environ.get("MESSAGE_KEY")
 
     try:
         r = requests.get(url=URL,headers=headers)
