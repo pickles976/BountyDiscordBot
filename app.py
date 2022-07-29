@@ -10,7 +10,8 @@ PERIOD = 30
 def request_messages():
 
     # url to retrieve messages from
-    URL = os.environ.get("DJANGO_URL")
+    # URL = os.environ.get("DJANGO_URL")
+    URL = "www.google.com"
 
     data = {}
     
