@@ -11,7 +11,7 @@ def request_messages():
 
     # url to retrieve messages from
     # URL = os.environ.get("DJANGO_URL")
-    URL = "https://www.google.com/"
+    URL = "https://www.foxholebounties.com/get_messages"
 
     data = {}
     
