@@ -11,3 +11,5 @@
 Copy environment variables from .env
 
     heroku config:set ENVIRONMENT_VAR="some variable"
+
+    heroku logs --ps worker
