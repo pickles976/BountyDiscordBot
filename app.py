@@ -3,13 +3,14 @@ import requests
 import discord
 import asyncio
 
-# url to retrieve messages from
-URL = "http://foxhole-bounties.herokuapp.com/get_messages"
-
 # Period to sleep for before sending more messages
 PERIOD = 30
 
 def request_messages():
+
+    # url to retrieve messages from
+    URL = os.environ.get("DJANGO_URL")
+
     
     print("Sending Request...")
 
