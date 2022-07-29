@@ -4,6 +4,10 @@
 
     git push heroku main
 
+    heroku run bash
+
+    python app.py --detach
+
 Copy environment variables from .env
 
     heroku config:set ENVIRONMENT_VAR="some variable"
