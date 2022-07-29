@@ -11,17 +11,21 @@ def request_messages():
     # url to retrieve messages from
     URL = os.environ.get("DJANGO_URL")
 
+    data = {}
     
     print("Sending Request...")
 
     headers= { "secret" : os.environ.get("MESSAGE_KEY") }
 
-    r = requests.get(url=URL,headers=headers)
+    try:
+        r = requests.get(url=URL,headers=headers)
 
-    print(r)
-    print(r.json())
+        print(r)
+        print(r.json())
 
-    data = r.json()["messages"]
+        data = r.json()["messages"]
+    except:
+        print("Failed to send request")
 
     return data
 
