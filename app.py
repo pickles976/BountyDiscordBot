@@ -17,6 +17,7 @@ def request_messages():
 
     r = requests.get(url=URL,headers=headers)
 
+    print(r)
     print(r.json())
 
     data = r.json()["messages"]
