@@ -1,0 +1,1 @@
+Basic Discord bot for use with [Foxhole Bounties](https://github.com/pickles976/BountyWebsite)
