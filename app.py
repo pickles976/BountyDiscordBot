@@ -22,15 +22,15 @@ def request_messages():
     headers["Access-Control-Request-Method"] = "GET"
     headers["secret"] = os.environ.get("MESSAGE_KEY")
 
-    # try:
-    r = requests.get(url=URL,headers=headers)
+    try:
+        r = requests.get(url=URL,headers=headers)
 
-    print(r)
-    print(r.json())
+        print(r)
+        print(r.json())
 
-    data = r.json()["messages"]
-    # except:
-    #     print("Failed to send request")
+        data = r.json()["messages"]
+    except:
+        print("Failed to send request")
 
     return data
 
