@@ -30,6 +30,7 @@ def request_messages():
 
         data["messages"] = r.json()["messages"]
         data["notifications"] = r.json()["channel_messages"]
+
     except:
         print("Failed to send request")
 
@@ -49,19 +50,26 @@ async def get_messages():
     
     data = request_messages()
 
-    messages = data["messages"]
+    # if there are any messages for players
+    if "messages" in data:
 
-    for user in messages:
-        await send_message(user,messages[user])
+        messages = data["messages"]
 
-    notifications = data["notifications"]
+        for user in messages:
+            await send_message(user,messages[user])
 
-    for channel in notifications:
-        await send_message_channel(channel,notifications[channel])
+    # if there are any messages for channels
+    if "notifications" in data:
+
+        notifications = data["notifications"]
+
+        for channel in notifications:
+            await send_message_channel(channel,notifications[channel])
 
     print("Sleeping...")
     await asyncio.sleep(PERIOD)
 
+# send a message to a user
 async def send_message(target,payload):
     try:
         user = await client.fetch_user(target)
@@ -69,6 +77,7 @@ async def send_message(target,payload):
     except:
         print("Could not message user!")
 
+# send a message to a channel
 async def send_message_channel(target,payload):
     try:
         channel = await client.fetch_channel(target)
